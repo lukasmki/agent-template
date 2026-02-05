@@ -2,11 +2,15 @@ from pydantic_ai import Agent
 from dotenv import load_dotenv
 import random
 
-# Load API keys
-load_dotenv()
+SYSTEM_PROMPT = """
+You are a helpful AI agent.
+""".strip()
 
 # Setup the agent
-agent = Agent("google-gla:gemini-2.5-flash")
+agent = Agent(
+    system_prompt=SYSTEM_PROMPT,
+    output_type=str,
+)
 
 
 # Define a tool
@@ -17,4 +21,11 @@ def roll_dice() -> str:
 
 
 # Convert to chat interface
-app = agent.to_web()
+load_dotenv()  # Load API keys
+app = agent.to_web(
+    models=[
+        # "openai:gpt-5.2",
+        # "anthropic:claude-sonnet-4-5",
+        "google-gla:gemini-3-flash-preview",
+    ]
+)
