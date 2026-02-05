@@ -1,9 +1,10 @@
-
 # Agent Template
+
+![demo](assets/demo.png)
 
 This repository is a minimal template for building an AI agent using `pydantic-ai`.
 
-### **What this template provides**
+## **What this template provides**
 
 - A simple `Agent` configured in `main.py`.
 - A small example tool (`roll_dice`) demonstrating how to expose functions to the agent.
@@ -12,7 +13,7 @@ This repository is a minimal template for building an AI agent using `pydantic-a
 ### **Requirements**
 
 - Python 3.13 or newer
-- Provider API credentials required by `pydantic-ai` (e.g. Google, Anthropic, or OpenAI keys)
+- Provider API credentials (e.g. Google, Anthropic, or OpenAI keys)
 
 ## **Create a repository from this template & setup**
 
@@ -35,6 +36,8 @@ chmod +x run_interface.sh
 ```
 
 4. Open http://127.0.0.1:8000 in your browser to interact with the agent.
+
+5. Make changes! The chat window will automatically refresh after saving changes to the agent.
 
 ## **LLM API Configuration**
 
