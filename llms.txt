@@ -1,0 +1,192 @@
+# Agent Template Repository
+
+A minimal template for building AI agents using `pydantic-ai` with LLM-optimized documentation for coding agents.
+
+## Repository Overview
+
+This repository provides a foundational template for creating AI agents with Pydantic AI, designed specifically to help coding agents interpret user commands and generate appropriate agent implementations.
+
+## Key Components
+
+### Core Files
+- `main.py` - Minimal agent implementation with example tool (`roll_dice`)
+- `pyproject.toml` - Python project configuration with Pydantic AI dependencies  
+- `run_interface.sh` - Setup script for virtual environment and web UI launch
+- `.env.sample` - Environment variables template for API keys
+
+### Agent Structure
+The template demonstrates:
+- Basic Agent setup with system prompt
+- Tool implementation using `@agent.tool_plain` decorator
+- Web interface conversion using `agent.to_web()`
+- Multi-model support (OpenAI, Anthropic, Google Gemini)
+
+## For Coding Agents
+
+### Command Interpretation Patterns
+
+When users request agent creation, map these commands to the template:
+
+**"Create an agent that..." → Modify main.py**
+- Change `SYSTEM_PROMPT` to match desired behavior
+- Replace or add tools using `@agent.tool_plain` decorator
+- Adjust model selection in `agent.to_web()` call
+
+**"Add a tool for..." → Implement new function**
+```python
+@agent.tool_plain
+def your_tool() -> str:
+    """Tool description for the agent."""
+    # Implementation here
+    return result
+```
+
+**"Use model X" → Update model list**
+```python
+app = agent.to_web(
+    models=[
+        "openai:gpt-4o",           # OpenAI models
+        "anthropic:claude-3-5-sonnet",  # Anthropic models  
+        "google-gla:gemini-3-flash",    # Google models
+    ]
+)
+```
+
+**"Customize the interface" → Modify web setup**
+- Update host/port in `run_interface.sh`
+- Add middleware or authentication in `app` creation
+- Customize UI components (advanced)
+
+### Environment Setup Commands
+
+**"Set up the environment" → Execute:**
+```bash
+chmod +x run_interface.sh
+./run_interface.sh
+```
+
+**"Add API keys" → Create .env file with:**
+```env
+OPENAI_API_KEY=your_key_here
+ANTHROPIC_API_KEY=your_key_here  
+GOOGLE_API_KEY=your_key_here
+```
+
+### Extension Patterns
+
+**Adding Dependencies:**
+1. Update `pyproject.toml` `dependencies` array
+2. Run `uv sync` to install new packages
+3. Import and use in `main.py`
+
+**Creating Multiple Agents:**
+- Copy `main.py` pattern for each agent
+- Use different system prompts and tools
+- Consider modular approach for complex systems
+
+## Skills Integration
+
+This repository supports Agent Skills framework for progressive capability loading:
+
+### Skills Directory Structure
+```
+skills/
+├── skill-name/
+│   └── SKILL.md
+```
+
+### Skills Implementation
+- Use `pydantic-ai-skills` package for dynamic skill loading
+- Skills provide modular instructions and tools
+- Progressive disclosure reduces token usage
+
+### Skill Creation Commands
+
+**"Create a skill for X" → Create directory with SKILL.md:**
+```yaml
+---
+name: skill-name
+description: Brief description of skill purpose
+---
+
+# Skill Name
+## When to Use This Skill
+Use this skill when you need to...
+
+## Instructions
+1. Step one
+2. Step two
+```
+
+## Best Practices
+
+### For Coding Agents
+1. **Read existing code** before making changes
+2. **Follow naming conventions** established in the template
+3. **Test locally** using `./run_interface.sh`
+4. **Document changes** in comments and commit messages
+
+### Security Considerations
+1. **Never commit API keys** - use environment variables
+2. **Validate user inputs** in tool implementations
+3. **Use appropriate permissions** for file operations
+4. **Follow least privilege principle** for agent capabilities
+
+## Model Integration
+
+### Supported Providers
+- **OpenAI**: `openai:gpt-4o`, `openai:gpt-4o-mini`
+- **Anthropic**: `anthropic:claude-3-5-sonnet`, `anthropic:claude-3-haiku`
+- **Google**: `google-gla:gemini-3-flash`, `google-gla:gemini-3-pro`
+
+### Model Selection Guidelines
+- **GPT-4o**: Best for general-purpose tasks
+- **Claude Sonnet**: Good for analysis and writing
+- **Gemini Flash**: Fast responses, cost-effective
+- Consider task requirements and cost constraints
+
+## Testing and Validation
+
+### Local Testing
+```bash
+# Start the interface
+./run_interface.sh
+
+# Test in browser at http://127.0.0.1:8000
+# Try the roll_dice tool
+# Test custom tools if added
+```
+
+### Validation Steps
+1. **Agent loads successfully** (no import errors)
+2. **Tools execute correctly** (test each tool)
+3. **Web interface responds** (check browser console)
+4. **API authentication works** (verify model access)
+
+## Common User Requests → Implementation
+
+| User Request | Implementation |
+|--------------|----------------|
+| "Create an agent that analyzes text" | Add text analysis tools, update system prompt |
+| "Make it work with OpenAI" | Add `OPENAI_API_KEY` to .env, update models list |
+| "Add file reading capability" | Implement file I/O tool with safety checks |
+| "Create API integration" | Add HTTP client tool, implement API calls |
+| "Customize the web interface" | Modify app configuration, add styling |
+
+## Documentation Links
+
+- **AGENTS.md** - Detailed agent creation patterns
+- **USER_GUIDE.md** - Complete usage guide and examples
+
+## Repository Files
+
+- `/main.py` - Core agent implementation
+- `/pyproject.toml` - Dependencies and project config
+- `/run_interface.sh` - Environment setup and launch script
+- `/.env.sample` - API keys template
+- `/README.md` - Human-readable documentation
+- `/AGENTS.md` - Agent creation patterns
+- `/USER_GUIDE.md` - Complete usage patterns
+- `/skills/` - Agent skills directory (for modular capabilities)
+
+This repository is optimized for LLM interpretation and modification, providing clear patterns for common agent development tasks.
