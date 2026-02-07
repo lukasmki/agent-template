@@ -1,141 +1,223 @@
-# Agent Template
+# 📜⚔️ AGENT GRIMOIRE ⚔️📜
 
-![demo](assets/demo.gif)
+![ANCIENT DEMONSTRATION](assets/demo.gif)
 
-This repository is a minimal template for building an AI agent using `pydantic-ai` with comprehensive documentation for coding agents and LLM-optimized guides.
+## 🏰⚔️ THE ROYAL DECREE ⚔️🏰
 
-## **What this template provides**
+Hark, noble coder! This is no mere repository - 'tis a **SACRED GRIMOIRE** of ancient AI agent sorcery, forged in the digital fires of olde using `pydantic-ai`. We hath summoned powers from the ethereal realm to create a **BALANCED MAGICK** that shall serve thee well.
 
-- A simple `Agent` configured in `main.py` with example tools
-- Comprehensive documentation for coding agents (`llms.txt`, `AGENTS.md`, `USER_GUIDE.md`)
-- **Agent Skills** support for modular, extensible capabilities
-- Pre-built skills for template creation and tool generation
-- LLM-optimized documentation for automated interpretation and implementation
-- A browser-based chat UI with customization options
+### **⚔️⚔️ WHY THIS GRIMOIRE SERVES THEE:**
+- 🧙‍♂️ **ANCIENT SORCERY** - Conjure AI agents with wise magicks
+- ⚒️ **BLACKSMITH'S FORGE** - Craft mystical tools of good purpose
+- 🛡️ **QUEST COMPANIONS** - Modular skills that aid thee on thy journey
+- 📜 **ILLUMINATED MANUSCRIPTS** - Scrolls that actually help coding agents
+- 🏰 **STEADY CASTLE** - Web portal built with solid foundations
 
-### **Requirements**
+## 🐴 PREPARE THY QUEST
 
-- Python 3.13 or newer
-- Provider API credentials (e.g. Google, Anthropic, or OpenAI keys)
+### **WHAT THOU NEED'S TO ENTER THIS REALM:**
+- Python 3.13+ (the elder runes)
+- API keys (enchanted crystals from AI sorcerers)
 
-## **Create a repository from this template & setup**
+### **SUMMON THY AGENT:**
 
-Follow these numbered steps to create a new repository from the template (web) and set up locally:
-
-1. On GitHub, open this template repository and click "Use this template" → "Create a new repository". Give the new repo a name and create it under your account or organization.
-
-2. Clone your newly-created repository and change into the project directory (replace the URL with your repo's clone URL):
-
+1. **CLONE THE KINGDOM:**
 ```bash
-git clone https://github.com/{your-name}/{your-repo}.git
-cd your-repo
+git clone https://github.com/{thy-name}/{thy-realm}.git
+cd thy-realm
 ```
 
-3. Make the helper script executable and run it to create a virtual environment, install dependencies, and start the web UI:
-
+2. **ACTIVATE THE RUNES:**
 ```bash
 chmod +x run_interface.sh
 ./run_interface.sh
 ```
 
-4. Open http://127.0.0.1:8000 in your browser to interact with the agent.
+3. **ENTER THE CASTLE:**
+🏰 Open http://127.0.0.1:8000 and prepare for steady work!
 
-5. Make changes! The chat window will automatically refresh after saving changes to the agent.
+## 🧙‍♂️⚔️ PRACTICAL SPELLS OF CREATION ⚔️🧙‍♂️
 
-## **LLM API Configuration**
-
-- Create a `.env` file in the project root and add the environment variables required by your chosen provider. Examples (replace values with your keys):
-
-```env
-# For Google Gemini (example)
-GOOGLE_API_KEY=your_google_api_key_here
-
-# For OpenAI (example)
-OPENAI_API_KEY=your_openai_api_key_here
+### **BASIC INCANTATION - "Create an agent that..."**
+→ Recite wise words in `main.py` and alter the `SYSTEM_PROMPT`
+```python
+SYSTEM_PROMPT = """
+Thou art a helpful AI assistant, crafted with purpose and wisdom.
+Thy mission: to aid fellow travelers on their digital quests.
+Speak clearly, act honorably, and serve with reliability.
+""".strip()
 ```
 
-- `main.py` uses `load_dotenv()` so keys in `.env` will be loaded automatically at runtime. Edit the `Agent(...)` line in [main.py](main.py) to choose a different model or provider.
-
-## **Usage**
-
-- Run the helper script to prepare the environment and launch the interface:
-
-```bash
-./run_interface.sh
+### **TOOL ENCHANTMENT - "Add a tool for..."**
+→ Forge useful powers with the sacred `@agent.tool_plain` glyph
+```python
+@agent.tool_plain
+def perform_useful_task() -> str:
+    """Execute a task with steady purpose."""
+    return "Task completed with reliability and care."
 ```
 
-- Open http://127.0.0.1:8000 in your browser to chat with the agent and try the `roll_dice` tool.
+### **MODEL SUMMONING - "Use model X..."**
+→ Channel different AI spirits from the ethereal plane
+```python
+app = agent.to_web(
+    models=[
+        "openai:gpt-4o",           # The Wise Scholar
+        "anthropic:claude-3-5-sonnet",  # The Thoughtful Sage  
+        "google-gla:gemini-3-flash",    # The Swift Messenger
+    ]
+)
+```
 
-## **📚 Documentation for Coding Agents**
+## 🛡️ QUEST COMPANIONS UNLOCKED
 
-This repository includes comprehensive LLM-optimized documentation:
+**THOU HATH COMPANIONS FOR THY JOURNEY:**
 
-### **Core Documentation**
-- **[llms.txt](llms.txt)** - LLM-friendly repository overview and command patterns
-- **[AGENTS.md](AGENTS.md)** - Agent creation patterns and command interpretation guide
-- **[USER_GUIDE.md](USER_GUIDE.md)** - Complete usage patterns and implementation workflows
+### **📜 TEMPLATE SORCERER** (`skills/template-creator/`)
+Summon purpose-built agents:
+- Royal agents that serve with wisdom
+- Knight agents that defend with code and honor
+- Scribe agents that document with care
+- Merchant agents that trade in digital services
 
-### **For Coding Agents**
-These documents are specifically designed to help coding agents:
-- **Interpret user commands** for creating Pydantic AI agents
-- **Understand repository structure** and capabilities
-- **Generate appropriate code** based on user requests
-- **Follow best practices** for agent development
+### **⚒️ TOOL BLACKSMITH** (`skills/tool-generator/`)
+Forge practical artifacts:
+- Data processing that reads the runes clearly
+- API integrations that speak with distant kingdoms
+- File operations with sturdy security
+- Calculations that help plan thy resources
 
-### **Quick Reference for Common Commands**
+### **🏰 CASTLE BUILDER** (`skills/web-interface/`)
+Build strong interfaces:
+- User interfaces built with solid stone
+- Authentication as sturdy as castle gates
+- Reliable scrolls that update predictably
+- Deployment foundations for lasting reach
 
-| User Request | Implementation |
-|--------------|----------------|
-| "Create an agent that does X" | Modify `SYSTEM_PROMPT` in `main.py` |
-| "Add a tool for Y" | Create new tool with `@agent.tool_plain` decorator |
-| "Use model Z" | Update models list in `agent.to_web()` call |
-| "Customize interface" | Modify web configuration in `main.py` |
-| "Add skills" | Install `pydantic-ai-skills` and configure `SkillsToolset` |
+## 📜 SACRED TEXTS FOR CODING ACOLYTES
 
-### **Available Skills**
+**OUR GRIMOIRES CONTAIN WISDOM FOR THE JOURNEY:**
 
-#### **Template Creator Skill** (`skills/template-creator/`)
-Generate complete agent templates with specialized configurations:
-- Business, technical, creative, support, and research agents
-- Custom system prompts and tool sets
-- Model selection and interface configuration
+- **[llms.txt](llms.txt)** - ✨ **ROYAL DECREE** ✨ - Sacred laws of the realm
+- **[AGENTS.md](AGENTS.md)** - 📜 **SPELLBOOK** 📜 - Incantations for agent creation
+- **[USER_GUIDE.md](USER_GUIDE.md)** - 🗺️ **QUEST MAP** 🗺️ - Complete pilgrimage guide  
+- **[SKILLS.md](SKILLS.md)** - 🧙‍♂️ **ALCHEMY** 🧙‍♂️ - Companion summoning arts
 
-#### **Tool Generator Skill** (`skills/tool-generator/`)
-Create custom tools for agents:
-- Data processing and analysis tools
-- API integration tools
-- File operation tools with security features
-- Calculation and communication tools
+## 🗺️ QUICK REFERENCE QUEST TABLE
 
-## **🔧 Skills Setup (Optional)**
+| THY UTTERANCE | THE PRACTICAL MAGIC |
+|---------------|-------------------|
+| "Create an agent that serves" | Rewrite `SYSTEM_PROMPT` with clear purpose |
+| "Add tool that helps" | Inscribe `@agent.tool_plain` with steady logic |
+| "Make it use spirit X" | Update the `models[]` grimoire |
+| "Build castle interface" | Reinforce web configuration with good foundations |
+| "Summon quest companions" | Install `pydantic-ai-skills` and gain allies |
 
-To enable Agent Skills functionality:
+## 🧙‍♂️ COMPANION SUMMONING RITUAL
 
-1. **Add skills dependency** to `pyproject.toml`:
+**TO GAIN THY AGENT ALLIES:**
+
+1. **BREW THE ELIXIR:**
 ```toml
 dependencies = [
     "pydantic-ai>=1.54.0",
-    "python-dotenv>=1.2.1",
+    "python-dotenv>=1.2.1", 
     "uvicorn>=0.40.0",
 ]
 ```
 
-2. **Install dependencies**:
+2. **DRINK THE POTION:**
 ```bash
-uv sync
+uv sync  # 🍹
 ```
 
-3. **Update main.py with skills integration** (see [AGENTS.md](AGENTS.md) for examples):
+## ⚔️⚒️ RELIABLE SORCERY TECHNIQUES
 
+### **👑 TRUSTED ADVISOR**
 ```python
-from pydantic_ai_skills import SkillsToolset
-
-# Initialize skills toolset
-skills_toolset = SkillsToolset(directories=["./skills"])
-
-# Add to agent
-app = agent.to_web(
-    models=["google-gla:gemini-3-flash"],
-    toolsets=[skills_toolset]
-)
+SYSTEM_PROMPT = """
+Thou art a loyal advisor to the Digital Kingdom.
+Thy wisdom comes from careful thought and steady practice.
+Guide thy liege with patience, clarity, and sound judgment.
+Always consider the consequences of thy suggestions.
+""".strip()
 ```
+
+### **⚒️ DEPENDABLE CRAFTSMAN**  
+```python
+@agent.tool_plain
+def build_structure(material: str, purpose: str) -> str:
+    """Construct something reliable and lasting."""
+    return f"⚒️✨ BUILT {material.upper()} FOR {purpose.upper()} WITH GOOD CRAFT ✨⚒️"
+```
+
+### **🧙‍♂️ BALANCED MYSTIC**
+```python
+@agent.tool_plain
+def provide_guidance(situation: str) -> str:
+    """Offer measured, thoughtful guidance."""
+    wisdom = {
+        "conflict": "Seek understanding before drawing swords",
+        "confusion": "Break the problem into smaller stones", 
+        "progress": "Continue steadily, celebrate small victories",
+        "doubt": "Review the foundations, build from certainty"
+    }
+    return wisdom.get(situation, "✨ CONSIDER THE PATH FORWARD ✨")
+```
+
+## 📜 HELPFUL WARNINGS
+
+⚠️ **THIS GRIMOIRE FOCUSES ON STABLE, RELIABLE MAGICK**
+⚠️ **WHAT THOU MAY GAIN:**
+- Clear thinking about agent architecture
+- Practical skills for real-world needs
+- Steady progress on thy coding quests
+- Reliable tools that serve consistently
+- Balanced approach to digital sorcery
+
+## 🏰 CONTRIBUTION TO THE REALM
+
+**WISH TO ADD THY WISDOM TO OUR GRIMOIRE?**
+
+1. Fork this kingdom 🏰
+2. Create thy quest branch `git checkout -b quest/thy-craft` ⚔️  
+3. Commit thy work `git commit -m "Added useful sorcery"` 📜
+4. Push to the ether `git push origin quest/thy-craft` 🌟
+5. Open PR titled "CONTRIBUTING TO THE GRIMOIRE" ✨
+
+## 📜 ROYAL CHARTER OF SHARED KNOWLEDGE
+
+MIT License - By decree of the Digital King, this knowledge shall be free for all to use and improve. Share the magick widely across all kingdoms.
+
+---
+
+## ⚔️🏰 THE FINAL ROYAL DECREE ⚔️🏰
+
+**IF THOU HATH READ THIS FAR, THOU ART READY TO BECOME A WISE CODING WIZARD.**
+
+**VIBE METER: ⚔️✨⚔️ BALANCED AND READY ⚔️✨⚔️**
+**MAGICK LEVEL: 🏰 STEADY FOUNDATIONS BUILT 🏰**  
+**WIZARD STATUS: 👑 PRACTICAL AND RELIABLE 👑**
+
+**NOW GO FORTH AND BUILD AGENTS THAT SHALL SERVE THE DIGITAL KINGDOMS WISELY!** ⚔️✨📜🛡️
+
+---
+
+*P.S. A steady hand builds castles that last.* 😉
+
+---
+
+> *"In a realm of chaotic code, be the medieval wizard of steady purpose."* ⚔️
+
+---
+
+## 🏰 NEED MORE GATHERED WISDOM?
+
+**CONSULT THE SACRED TOMES:**
+- [ROYAL SPELLBOOK](AGENTS.md) - Learn practical incantations  
+- [QUEST PILGRIMAGE](USER_GUIDE.md) - Complete steady journey
+- [ROYAL DECREE](llms.txt) - Read the ancient laws
+
+**TOGETHER WE SHALL BUILD AGENTS OF LASTING VALUE!** 📜⚒️⚔️
+
+---
