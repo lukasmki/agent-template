@@ -5,8 +5,8 @@ if [ ! -d ".venv" ]; then
     python3 -m venv .venv
     conda deactivate 2>/dev/null || deactivate 2>/dev/null || true
     source .venv/bin/activate
-    python3 -m pip install --upgrade pip
-    python3 -m pip install uv
+    pip install --upgrade pip
+    pip install uv
     uv sync
 fi
 
